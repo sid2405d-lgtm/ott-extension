@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTT Latest Series</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ── Setup screen ── -->
+  <div id="setup-screen" class="screen hidden">
+    <div class="setup-box">
+      <div class="setup-logo">🎬</div>
+      <h1>OTT Latest Series</h1>
+      <p>One-time setup — takes <strong>30 seconds</strong> with Google sign-in.</p>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>Open <strong>RapidAPI</strong> and sign in with Google (free, no credit card)</div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>Subscribe to <strong>Streaming Availability API</strong> — free plan, 100 req/day</div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            Copy your <strong>X-RapidAPI-Key</strong> from the API page header section<br/>
+            <code>looks like: a1b2c3d4e5f6...abc (50 characters)</code>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div>Paste it below and click Save</div>
+        </div>
+      </div>
+
+      <a id="rapidapi-link" href="#" class="open-link">Open RapidAPI — Streaming Availability ↗</a>
+
+      <input type="text" id="api-key-input" placeholder="Paste your RapidAPI key here..." />
+      <button id="save-key-btn" class="btn-primary">Save &amp; Load Shows</button>
+    </div>
+  </div>
+
+  <!-- ── Settings overlay ── -->
+  <div id="settings-overlay" class="overlay hidden">
+    <div class="overlay-box">
+      <div class="overlay-header">
+        <span>Settings</span>
+        <button id="close-settings" class="icon-btn">✕</button>
+      </div>
+      <label>RapidAPI Key</label>
+      <input type="text" id="settings-api-input" placeholder="Your RapidAPI key" />
+      <button id="update-key-btn" class="btn-primary">Update Key</button>
+      <p id="settings-msg" class="hidden"></p>
+    </div>
+  </div>
+
+  <!-- ── Main app ── -->
+  <div id="app-screen" class="screen hidden">
+    <header>
+      <span class="header-title">🎬 OTT Latest Series</span>
+      <div class="header-actions">
+        <button id="refresh-btn" class="icon-btn" title="Refresh">&#8635;</button>
+        <button id="settings-btn" class="icon-btn" title="Settings">&#9881;</button>
+      </div>
+    </header>
+
+    <div class="platform-tabs" id="platform-tabs">
+      <button class="tab active" data-catalog="all">All</button>
+      <button class="tab" data-catalog="netflix">
+        <span class="tab-dot" style="background:#E50914"></span>Netflix
+      </button>
+      <button class="tab" data-catalog="prime">
+        <span class="tab-dot" style="background:#00A8E1"></span>Prime
+      </button>
+      <button class="tab" data-catalog="hotstar">
+        <span class="tab-dot" style="background:#1565C0"></span>Hotstar
+      </button>
+      <button class="tab" data-catalog="jiocinema">
+        <span class="tab-dot" style="background:#c0392b"></span>JioCinema
+      </button>
+      <button class="tab" data-catalog="sonyliv">
+        <span class="tab-dot" style="background:#003399"></span>SonyLIV
+      </button>
+      <button class="tab" data-catalog="zee5">
+        <span class="tab-dot" style="background:#7B2D8B"></span>Zee5
+      </button>
+    </div>
+
+    <div id="status-bar" class="status-bar hidden">
+      <span id="status-text"></span>
+    </div>
+
+    <div id="loading-grid" class="grid">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+
+    <div id="content-grid" class="grid hidden"></div>
+
+    <div id="empty-state" class="empty-state hidden">
+      <span>😶</span>
+      <p>No shows found for this platform.</p>
+    </div>
+
+    <div id="error-state" class="error-state hidden">
+      <span>⚠️</span>
+      <p id="error-msg"></p>
+      <div class="error-actions">
+        <button id="retry-btn" class="btn-primary">Retry</button>
+        <button id="change-key-btn" class="btn-secondary">Change Key</button>
+      </div>
+    </div>
+
+    <footer>
+      <span id="last-updated"></span>
+      <span>Powered by Streaming Availability API</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

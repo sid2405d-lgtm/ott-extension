@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "OTT Latest Series — India",
+  "version": "1.4.0",
+  "description": "Browse the latest TV series on Netflix, Prime Video, Hotstar, JioCinema, SonyLIV and Zee5.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "OTT Latest Series"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://streaming-availability.p.rapidapi.com/*",
+    "https://www.omdbapi.com/*"
+  ]
+}
